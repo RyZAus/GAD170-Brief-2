@@ -4,8 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// Functions to complete:
-/// - Initial Stats
-/// - Return Battle Points
+/// - Initial Stats -
+/// - Return Battle Points -
 /// - Deal Damage
 /// </summary>
 public class Character : MonoBehaviour
@@ -48,6 +48,13 @@ public class Character : MonoBehaviour
         Debug.LogWarning("InitialStats called, needs to distribute points into stats. This should be able to be ported from previous brief work");
         // We probably want to set out default level and some default random stats 
         // for our luck, style and rythmn.
+        //Have set all base values for stats
+        level = 1;
+        currentXP = 0;
+        luck = Random.Range(1, 3);
+        style = Random.Range(2, 10);
+        rhythm = Random.Range(2, 10);
+
     }
 
     /// <summary>
@@ -64,13 +71,28 @@ public class Character : MonoBehaviour
     /// Used to generate a number of battle points that is used in combat.
     /// </summary>
     /// <returns></returns>
+    int luckrr;
+    public int luckoutcome;
     public int ReturnBattlePoints()
     {
         // We want to design some algorithm that will generate a number of points based off of our luck,style and rythm, we probably want to add some randomness in our calculation too
         // to ensure that there is not always a draw, by default it just returns 0. 
         // If you right click this function and find all references you can see where it is called.
+        luckoutcome = (luck * luckrr);
+        int luckrrin;
+        luckrrin = (Random.Range(1, 3));
+        if (luckrrin < 1)
+        {
+            luckrr = 2;
+        }
+        else
+        {
+            luckrr = 1;
+        }
+        int battlepoints;
+        battlepoints = (luckoutcome * (level + 1)) + (style + rhythm);
         Debug.LogWarning("ReturnBattlePoints has been called we probably want to create some battle points based on our stats");
-        return 0;
+        return battlepoints;
     }
 
     /// <summary>
