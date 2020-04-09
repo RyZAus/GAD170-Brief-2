@@ -48,7 +48,7 @@ public class Character : MonoBehaviour
         Debug.LogWarning("InitialStats called, needs to distribute points into stats. This should be able to be ported from previous brief work");
         // We probably want to set out default level and some default random stats 
         // for our luck, style and rythmn.
-        //Have set all base values for stats
+        //sets all base values for stats
         level = 1;
         currentXP = 0;
         luck = Random.Range(1, 3);

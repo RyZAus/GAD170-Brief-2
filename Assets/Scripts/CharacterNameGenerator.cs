@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Functions to complete:
-/// - Generate Names
+/// - Generate Names -
 /// </summary>
 public class CharacterNameGenerator : MonoBehaviour
 {
@@ -23,22 +23,30 @@ public class CharacterNameGenerator : MonoBehaviour
     /// </summary>
     /// <param name="namesNeeded"></param>
     /// <returns></returns>
+    /// scope / return (name) / name / (imput)
     public CharacterName[] GenerateNames(int namesNeeded)
     {
         Debug.LogWarning("CharacterNameGenerator called, it needs to fill out the names array with unique randomly constructed character names");
+        //return name /  / number of arrays
         CharacterName[] names = new CharacterName[namesNeeded]; 
         CharacterName emptyName = new CharacterName(string.Empty, string.Empty, string.Empty, string.Empty);
+        //CharacterName emptyName = new CharacterName(string.firstNames[i], string.;astNames[i], string.nickNames[i], string.descriptos[i]);
 
-
+        //for loop / initialise i = 0 / condition i < names.Length / increment i++
         for (int i = 0; i < names.Length; i++)
         {
-            //For every name we need to generate, we need to assign a random first name, last name, nickname and descriptor to each.
-            //Below is an example of setting the first name of the emptyName variable to the string "Blank".
-            emptyName.firstName = "Blanky Blank Blank";
+            //creates a name from the list randomly for each name and assigns it to firstName, lastName, nickname, and descriptor respectively
+            emptyName.firstName = firstNames[Random.Range(0, firstNames.Count)];
+            emptyName.lastName = lastNames[Random.Range(0, lastNames.Count)];
+            emptyName.nickname = nicknames[Random.Range(0, nicknames.Count)];
+            emptyName.descriptor = descriptors[Random.Range(0, descriptors.Count)];
+            //store emptyName to array value i Eg. names[0] = john sorrow narrow slow
             names[i] = emptyName;
         }
 
         //Returns an array of names that we just created.
         return names;
+
+        //array loop
     }
 }

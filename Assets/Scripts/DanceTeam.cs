@@ -20,7 +20,8 @@ public class DanceTeam : MonoBehaviour
     public Text troupeNameText; // this is just a text element in the scene that set by the troupe name function.
     public List<Character> allDancers; // A list of all the dancers on our team.
     public List<Character> activeDancers; // A list of our currently active dancers, when they die they need to be removed from this list. 
-
+    public CharacterNameGenerator nameGenerator;
+    
     /// <summary>
     /// Adds a new dancer to our dance team
     /// </summary>
@@ -29,6 +30,13 @@ public class DanceTeam : MonoBehaviour
     {
         Debug.LogWarning("AddNewDancer called, it needs to put dancer in both lists and set the dancers team.");
         // we probably want to add our new dancers to our all dancers and our active dancers lists here..
+        for (int i = 0; i < 6; i++)
+        {
+            allDancers[i] = 
+            activeDancers[i] = 
+            
+
+        }
     }
 
     /// <summary>
@@ -37,9 +45,10 @@ public class DanceTeam : MonoBehaviour
     /// <param name="dancer"></param>
     public void RemoveFromActive(Character dancer)
     {
-        Debug.LogWarning("RemoveFromActive called, it needs to take the dancer out of the active dancers list");  
+        Debug.LogWarning("RemoveFromActive called, it needs to take the dancer out of the active dancers list");
         // This gets called when our team mate dies :(
         // We probably want to remove the dancer passed in from our active dancer list.
+        
     }
 
     /// <summary>
@@ -52,7 +61,7 @@ public class DanceTeam : MonoBehaviour
     {
         for (int i = 0; i < names.Length; i++)
         {
-            //make one
+            //make a new dancer
             var newDancer = Instantiate(dancerPrefab, lineUpStart.position + lineUpStart.right * i * DancerSpaceing * ((int)screenDirection), dancerPrefab.transform.rotation);
             //fix its rotation, animations are often a pain
             newDancer.transform.forward = -lineUpStart.right;
