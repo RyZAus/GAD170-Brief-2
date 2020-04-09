@@ -5,7 +5,7 @@ using System.Linq;
 
 /// <summary>
 /// Functions to complete:
-/// - Init Teams
+/// - Init Teams-
 /// </summary>
 public class DanceTeamInit : MonoBehaviour
 {
@@ -43,18 +43,15 @@ public class DanceTeamInit : MonoBehaviour
         // We need to generate some character names for our teams to use from our CharacterNameGenerator.
         // We need to spawn in some dancers using teamA.InitialiseTeamFromNames.
         ///Sets Troup Name to a random name from above
-        teamA.SetTroupeName(TeamNamesArray[0]);
-        teamB.SetTroupeName(TeamNamesArray[1]);
+        teamA.SetTroupeName("Team Ron");
+        teamB.SetTroupeName("Team Jan");
         ///Sets Troup Name to a random name from above
-        //ISSUES
+        //Assigns 3 names to either array of names
         CharacterName[] namesToAssignLeft = nameGenerator.GenerateNames(dancersPerSide);
-        CharacterName[] namesToAssignRight = nameGenerator.GenerateNames(dancersPerSide);        
-        for (int i = 0; i < 3; i++)
-        {        
-            teamA.InitaliseTeamFromNames();
-            teamB.InitaliseTeamFromNames();
-        }          
-        //ISSUES
+        CharacterName[] namesToAssignRight = nameGenerator.GenerateNames(dancersPerSide);
+        //initalises the teams from both teams names
+        teamA.InitaliseTeamFromNames(dancerPrefab, DanceTeam.Direction.Left, namesToAssignLeft);
+        teamB.InitaliseTeamFromNames(dancerPrefab, DanceTeam.Direction.Right, namesToAssignRight);
         Debug.LogWarning("InitTeams called, needs to create character names via CharacterNameGenerator and get them into the team.InitaliseTeamFromNames");
     }
 }

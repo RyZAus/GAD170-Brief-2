@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Functions to complete:
-/// - Remove From Active
-/// - Add Dancer
+/// - Remove From Active-
+/// - Add Dancer-
 /// </summary>
 public class DanceTeam : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class DanceTeam : MonoBehaviour
     public List<Character> allDancers; // A list of all the dancers on our team.
     public List<Character> activeDancers; // A list of our currently active dancers, when they die they need to be removed from this list. 
     public CharacterNameGenerator nameGenerator;
+    public DanceTeamInit DancersInit;
     
     /// <summary>
     /// Adds a new dancer to our dance team
@@ -30,13 +31,8 @@ public class DanceTeam : MonoBehaviour
     {
         Debug.LogWarning("AddNewDancer called, it needs to put dancer in both lists and set the dancers team.");
         // we probably want to add our new dancers to our all dancers and our active dancers lists here..
-        for (int i = 0; i < 6; i++)
-        {
-            allDancers[i] = 
-            activeDancers[i] = 
-            
-
-        }
+        allDancers.Add(dancer);
+        activeDancers.Add(dancer);        
     }
 
     /// <summary>
@@ -48,7 +44,7 @@ public class DanceTeam : MonoBehaviour
         Debug.LogWarning("RemoveFromActive called, it needs to take the dancer out of the active dancers list");
         // This gets called when our team mate dies :(
         // We probably want to remove the dancer passed in from our active dancer list.
-        
+        activeDancers.Remove(dancer);        
     }
 
     /// <summary>
@@ -65,12 +61,14 @@ public class DanceTeam : MonoBehaviour
             var newDancer = Instantiate(dancerPrefab, lineUpStart.position + lineUpStart.right * i * DancerSpaceing * ((int)screenDirection), dancerPrefab.transform.rotation);
             //fix its rotation, animations are often a pain
             newDancer.transform.forward = -lineUpStart.right;
-
             //give it a name and add it to the team
             var aChar = newDancer.GetComponent<Character>();
             aChar.AssignName(names[i]);
             aChar.myTeam = this;
             AddNewDancer(aChar);
+            //prototype code
+            //allDancers = aChar;
+            //activeDancers = aChar;
         }
     }
 
