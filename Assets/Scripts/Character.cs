@@ -78,7 +78,6 @@ public class Character : MonoBehaviour
         // We want to design some algorithm that will generate a number of points based off of our luck,style and rythm, we probably want to add some randomness in our calculation too
         // to ensure that there is not always a draw, by default it just returns 0. 
         // If you right click this function and find all references you can see where it is called.
-        luckoutcome = (luck * luckrr);
         int luckrrin;
         luckrrin = (Random.Range(1, 3));
         if (luckrrin < 1)
@@ -89,6 +88,7 @@ public class Character : MonoBehaviour
         {
             luckrr = 1;
         }
+        luckoutcome = (luck * luckrr);
         int battlepoints;
         battlepoints = (luckoutcome * (level + 1)) + (style + rhythm);
         Debug.LogWarning("ReturnBattlePoints has been called we probably want to create some battle points based on our stats");

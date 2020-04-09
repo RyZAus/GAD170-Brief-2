@@ -16,9 +16,45 @@ public class FightManager : MonoBehaviour
     //You just need determine who wins/loses/draws etc.
     IEnumerator Attack(Character teamACharacter, Character teamBCharacter)
     {
-        float outcome = 0;// the outcome from the fight, i.e. the % that the winner has won by...fractions could help us calculate this, but start with whole numbers i.e. 0 = draw, and 1 = 100% win.
-        Character winner = teamACharacter;//defaulting the winner to TeamA.
-        Character defeated = teamBCharacter;//defaulting the loser to TeamB.
+        //Character winner = teamACharacter;//defaulting the winner to TeamA.
+        //Character defeated = teamBCharacter;//defaulting the loser to TeamB.
+        if (teamACharacter > teamBCharacter)
+        {
+            winner = teamACharacter;
+            defeated = teamBCharacter;
+        }
+        else
+        {
+            winner = teamBCharacter;
+            defeated = teamACharacter;
+        }
+
+        // the outcome from the fight, i.e. the % that the winner has won by...fractions could help us calculate this, but start with whole numbers i.e. 0 = draw, and 1 = 100% win.
+        float outcome = 0;
+        //Create float for currentbattleoutcome used inside of outcome script
+        float currentBattleOutcome;
+        //if statement to determine oucome using percentage
+        if (winner = teamACharacter)
+        {
+            currentBattleOutcome = ((1f - ((float)teamBBattlePoints / (float)teamABattlePoints)) * 2f);
+        }
+        else
+        {
+            currentBattleOutcome = ((1f - ((float)teamABattlePoints / (float)teamBBattlePoints)) * 2f);
+        }
+        //used as a border system to prevent the character from going beyond a crushing win and return an outcome
+        if (currentBattleOutcome > 1)
+        {
+            outcome = 1;
+        }
+        else
+        {
+            outcome = currentBattleOutcome;
+        }
+    
+
+
+        
 
         // Tells each dancer that they are selcted and sets the animation to dance.
         SetUpAttack(teamACharacter);
